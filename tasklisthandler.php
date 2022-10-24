@@ -15,7 +15,8 @@
     function clearDB(){
         global $pdo;
 
-        $STH = $pdo->query("TRUNCATE TABLE `tasks`");
+        $STH = $pdo->query("DELETE FROM `tasks` WHERE `user_id` = ?");
+        $taskListStmt->execute([$_COOKIE['id']]); 
     }
 
     function addInDB(){
